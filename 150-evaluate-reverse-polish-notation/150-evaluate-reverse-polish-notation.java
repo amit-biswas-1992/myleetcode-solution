@@ -15,21 +15,20 @@ class Solution {
         
         else{
             
-            String operator = token;
             int num2 = Integer.valueOf(stack.pop());
             int num1 = Integer.valueOf(stack.pop());
             
             
-            if(operator.equals("+")){
+            if(token.equals("+")){
                 stack.push(String.valueOf(num1 + num2));
             }
-            if(operator.equals("-")){
+            if(token.equals("-")){
                 stack.push(String.valueOf(num1 - num2));
             }
-            if(operator.equals("*")){
+            if(token.equals("*")){
                 stack.push(String.valueOf(num1 * num2));
             }
-            if(operator.equals("/")){
+            if(token.equals("/")){
                 stack.push(String.valueOf(num1 / num2));
             }
             
