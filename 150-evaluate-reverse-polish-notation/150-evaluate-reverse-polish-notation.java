@@ -8,12 +8,14 @@ class Solution {
     
     for(String token : tokens){
         
-        stack.push(token);
+        if(!operators.contains(token))
+        
+            stack.push(token);
         
         
-        if(operators.contains(token)){
+        else{
             
-            String operator = stack.pop();
+            String operator = token;
             int num2 = Integer.valueOf(stack.pop());
             int num1 = Integer.valueOf(stack.pop());
             
