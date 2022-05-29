@@ -16,7 +16,6 @@ var groupAnagrams = function(strs) {
         
         let countStr = ca.join()
         
-        console.log(countStr)
         
         if(map.has(countStr)){
             map.get(countStr).push(str)
