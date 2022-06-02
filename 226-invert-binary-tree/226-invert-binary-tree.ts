@@ -13,23 +13,16 @@
  */
 
 function invertTree(root: TreeNode | null): TreeNode | null {
-    return helper(root)
-    
-
-};
-
-function helper(root: TreeNode | null): TreeNode | null {
     if(root==null) return null
     
     let left = root.left
     let right = root.right
     
-    root.left = helper(right)
-    root.right = helper(left)
+    root.left = invertTree(right)
+    root.right = invertTree(left)
     
     return root
     
-    
-        
 
-}
+};
+
