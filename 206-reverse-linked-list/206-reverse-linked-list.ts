@@ -23,7 +23,6 @@ function reverseList(head: ListNode | null): ListNode | null {
         
     }
     
-    head = prev
     
-    return head
+    return prev
 };
