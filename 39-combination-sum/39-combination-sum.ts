@@ -8,7 +8,6 @@ function combinationSum(candidates: number[], target: number): number[][] {
 
 
 function helper(candidates: number[], target: number, index: number, curSum: number,curr: number[],result: number[][]){
-    console.log(curr,curSum)
     if(curSum>target || index>candidates.length-1) return
     
     if(curSum==target){
