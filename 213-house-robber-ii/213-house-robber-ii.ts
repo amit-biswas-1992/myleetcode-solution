@@ -1,5 +1,8 @@
 function rob(nums: number[]): number {
+    //what if the length is 1
     if(nums.length == 1) return nums[0]
+    
+    
     let map = new Map()
     let map2 = new Map()
     return Math.max(helper(nums,1,nums.length-1,map),helper(nums,0,nums.length-2,map2))
