@@ -8,6 +8,7 @@ function pacificAtlantic(heights: number[][]): number[][] {
     let visitedPacific: boolean[][] = Array(m).fill(false).map( () => Array(n).fill(false) )
     let visitedAtlantic: boolean[][] = Array(m).fill(false).map( () => Array(n).fill(false) )
     
+    
     for(let i=0;i<m;i++){
         dfs(heights,i,0,visitedPacific,heights[i][0])
         dfs(heights,i,n-1,visitedAtlantic,heights[i][n-1])
@@ -19,7 +20,7 @@ function pacificAtlantic(heights: number[][]): number[][] {
         dfs(heights,m-1,i,visitedAtlantic,heights[m-1][i])
         
     }
-    console.log(visitedPacific,visitedAtlantic)
+    //console.log(visitedPacific,visitedAtlantic)
     
     for(let i=0;i<m;i++){
         for(let j=0;j<n;j++){
