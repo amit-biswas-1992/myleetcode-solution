@@ -13,16 +13,32 @@
  */
 
 function kthSmallest(root: TreeNode | null, k: number): number {
-    let sorted: number[] = []
-    helper(root,k,sorted)
+    let treeInfo = new TreeInfo(0,0)
+    helper(root,k,treeInfo)
     
-    return sorted[k-1]
+    return treeInfo.kthElem
 };
 
-let helper = (root: TreeNode | null, k: number, sorted: number[]) => {
+class TreeInfo{
+    count: number
+    kthElem: number
+    
+    constructor(c: number, elem: number){
+        this.count = c
+        this.kthElem = elem
+    }
+}
+
+let helper = (root: TreeNode | null, k: number, info: TreeInfo) => {
     if(root==null) return
-    helper(root.left,k,sorted)
-    sorted.push(root.val)
-    helper(root.right,k,sorted)
+    let count = 0
+    helper(root.left,k,info)
+    info.count++
+    if(info.count==k){
+        info.kthElem = root.val
+        //no need to traverse more
+        return
+    } 
+    helper(root.right,k,info)
     
 }
