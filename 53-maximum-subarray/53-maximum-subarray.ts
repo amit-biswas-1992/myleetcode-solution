@@ -3,13 +3,11 @@ function maxSubArray(nums: number[]): number {
     let max = nums[0]
     
     
-    let left = 0
     let currentSum = max
     
     for(let i=1;i<nums.length;i++){
         if(currentSum<0){
-            left = i
-            currentSum = nums[left]
+            currentSum = nums[i]
         }
         else{
             currentSum += nums[i]
