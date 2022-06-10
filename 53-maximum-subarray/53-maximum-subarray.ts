@@ -6,7 +6,7 @@ function maxSubArray(nums: number[]): number {
     let currentSum = max
     
     for(let i=1;i<nums.length;i++){
-        if(currentSum<0){
+        if(currentSum+nums[i]<nums[i]){
             currentSum = nums[i]
         }
         else{
