@@ -11,12 +11,11 @@ let helper = (n: number, map : Map<number,number>) => {
     
     if(map.has(n)) return map.get(n)
     
-    let way1 = helper(n-1,map)
-    let way2 = helper(n-2,map)
+    let ways = helper(n-1,map) + helper(n-2,map)
     
-    map.set(n,way1+way2)
+    map.set(n,ways)
     
-    return way1+way2
+    return ways
     
     
 }
