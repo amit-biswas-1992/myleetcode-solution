@@ -12,6 +12,8 @@ function eraseOverlapIntervals(intervals: number[][]): number {
             removeCount++
         }
         else{
+            //new value accepted
+            //so next time, we will check start time for current interval end time. so update with current index. it is basically last accepted Index
             current = i
         }
     }
