@@ -18,12 +18,12 @@ function findMin(nums: number[]): number {
         if(nums[mid]>nums[mid+1]) return nums[mid+1]
         
         if(nums[mid]<nums[0]){
-            right = mid
+            right = mid - 1
         }
         else{
-            left = mid
+            left = mid + 1
         }
     }
     
-    return nums[0]
+    return -1
 };
