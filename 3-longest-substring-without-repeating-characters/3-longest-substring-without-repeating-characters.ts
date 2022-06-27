@@ -1,26 +1,26 @@
 function lengthOfLongestSubstring(s: string): number {
+    
+    let map: Map<string,number> = new Map()
+    
+    let length = 0
+    
     let windowStart = 0
-    let charIndexMap : Map<string,number> = new Map()
-    
-    let longestSubstringLength = 0
-    
-    for(let windowEnd=0;windowEnd<s.length;windowEnd++){
+    for(let windowEnd = 0;windowEnd<s.length;windowEnd++){
         
         let char = s[windowEnd]
         
-        if(charIndexMap.has(char)){
-            windowStart = Math.max(windowStart,charIndexMap.get(char)+1)
-            
+        if(map.has(char)){
+            windowStart = Math.max(windowStart,map.get(char)+1)
         }
-                        
-        longestSubstringLength = Math.max(longestSubstringLength,windowEnd-windowStart+1)
+        
+        map.set(char,windowEnd)
+        
+        length = Math.max(length,windowEnd-windowStart+1)
         
         
-        charIndexMap.set(char,windowEnd)
-
     }
     
+    return length
     
-    return longestSubstringLength
-
+    
 };
