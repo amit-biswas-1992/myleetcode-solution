@@ -14,27 +14,23 @@
 
 function pathSum(root: TreeNode | null, targetSum: number): number[][] {
     let result = []
-    helper(root,targetSum,0,result,[])
+    helper(root,targetSum,result,[])
     return result
 };
 
 
-function helper(root: TreeNode| null, targetSum: number, currSum: number, result: number[][],current: number[]){
+function helper(root: TreeNode| null, targetSum: number,  result: number[][],current: number[]){
     
     if(!root) return;
     
-    if(root.left == null && root.right == null){
-        if(currSum + root.val == targetSum){
-            current.push(root.val)
-            result.push(Array.from(current))
-        }
-            
-    }
-    
     current.push(root.val)
     
-    helper(root.left,targetSum,currSum+root.val,result,Array.from(current))
-    helper(root.right,targetSum,currSum+root.val,result,Array.from(current))
+    if(root.left == null && root.right == null && root.val == targetSum){
+            result.push(Array.from(current))
+    }
+    
+    helper(root.left,targetSum-root.val,result,Array.from(current))
+    helper(root.right,targetSum-root.val,result,Array.from(current))
     return
 }
 
