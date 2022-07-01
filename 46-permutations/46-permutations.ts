@@ -2,24 +2,31 @@ function permute(nums: number[]): number[][] {
     
     let result = []
     
-    subsets(nums,0,[],result)
+    let set = new Set<number>()
+    
+    backtrack(nums,set,[],result)
     
     return result
 
 };
 
-function subsets(nums: number[], index: number, curr: number[],result: number[][]){
-    if(index == nums.length){
-        result.push(curr)
+function backtrack(nums: number[], set: Set<number>, curr: number[],result: number[][]){
+    if(curr.length == nums.length){
+        result.push(Array.from(curr))
         return
     }
     
-    for(let i=0;i<curr.length+1;i++){
-        
-       let newPerm = curr.slice(0)
+    for(let i=0;i<nums.length;i++){
+        if(set.has(nums[i])) continue
     
-       newPerm.splice(i,0,nums[index])
-       subsets(nums,index+1,newPerm,result) 
+        curr.push(nums[i])
+        
+        set.add(nums[i])
+        
+        backtrack(nums,set,curr,result) 
+        curr.pop()
+        set.delete(nums[i])
+        
             
     }
     
