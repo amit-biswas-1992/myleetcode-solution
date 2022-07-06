@@ -9,7 +9,6 @@ function getKth(lo: number, hi: number, k: number): number {
     
     let powers = [...powerMap.entries()].sort((a,b) => a[1]-b[1])
     
-    console.log(powers)
     
     return powers[k-1][0]
 };
