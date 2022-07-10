@@ -1,34 +1,33 @@
 function longestPalindrome(s: string): string {
-    if(s.length == 0) return ""
     
-    let longestPalindrome: string = ""
+    let window = [0,0]
     
-    for(let i=0;i<s.length;i++){
-        let palString1 = checkPalindrome(s,i,i);
-        let palString2 = checkPalindrome(s,i,i+1)
+    for(let i=0;i<s.length-1;i++){
         
+        let pal1 = findPalindrome(s,i,i)
+        let pal2 = findPalindrome(s,i,i+1)
         
-        longestPalindrome = longestPalindrome.length < palString1.length ? palString1: longestPalindrome
-        longestPalindrome = longestPalindrome.length < palString2.length ? palString2: longestPalindrome
+        let window1 = pal1[1]-pal1[0]
+        let window2 = pal2[1]-pal2[0]
         
+        let currMaxWindow = window1>=window2 ? pal1 : pal2
+        
+        if(currMaxWindow[1]-currMaxWindow[0]>window[1]-window[0]){
+            window = currMaxWindow
+        }
         
     }
     
-    return longestPalindrome
     
+    return s.substring(window[0],window[1]+1)
 };
 
-function checkPalindrome(s: string, left : number, right: number){
-    let palString: string = ""
-    
-    while(left>=0 && right<s.length && s[left] == s[right]){
+let findPalindrome = (s: string, left: number, right: number) => {
+    while(left>= 0 && right <= s.length-1 &&  s[left]==s[right]){
         left--
         right++
     }
     
-    return s.substring(left+1,right)
-    
+    return [left+1,right-1]
 }
-
-
 
