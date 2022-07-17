@@ -40,7 +40,6 @@ function recursiveRemove(s: string, index: number, left: number, right: number, 
     
     
     expression += s[index]
-    let length = expression.length
     
     
     
