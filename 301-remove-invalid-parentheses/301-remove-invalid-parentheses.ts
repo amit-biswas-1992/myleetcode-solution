@@ -47,7 +47,8 @@ function recursiveRemove(s: string, index: number, left: number, right: number, 
         recursiveRemove(s,index+1,left+1,right,removeCount,validSet,expression)
     }
     else if(s[index]==')'){
-        recursiveRemove(s,index+1,left,right+1,removeCount,validSet,expression)
+        if(right<left)
+            recursiveRemove(s,index+1,left,right+1,removeCount,validSet,expression)
     }
     else{
         recursiveRemove(s,index+1,left,right,removeCount,validSet,expression)
