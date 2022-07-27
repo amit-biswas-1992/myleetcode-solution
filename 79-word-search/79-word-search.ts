@@ -1,3 +1,6 @@
+//O(TC) = m*n*dfs() = m*n*4^w ,w=word length
+//O(SC) = m*n + dfs() = m*n + 4^w 
+
 function exist(board: string[][], word: string): boolean {
     let visited = new Array(board.length).fill(false).map( () => new Array(board[0].length).fill(false))
     
