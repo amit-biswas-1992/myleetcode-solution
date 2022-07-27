@@ -1,5 +1,5 @@
 //O(TC) = m*n*dfs() = m*n*4^w ,w=word length
-//O(SC) = m*n + dfs() = m*n + 4^w 
+//O(SC) = dfs() = m*n + 4^w 
 //pattern: backtracking
 
 function exist(board: string[][], word: string): boolean {
