@@ -3,22 +3,8 @@
 //with Trie: TC = words.length*avg word length + pref.length
 
 function prefixCount(words: string[], pref: string): number {
-    
-        
-    let count = 0
-    
-    for(const word of words){
-        let found = true
-        for(let i=0;i<pref.length;i++){
-            if(word[i]!==pref[i]) found=false
-        }
-        
-        if(found) count++
-        
-        
-    }
-    
-    return count
+   
+    return words.filter( w => w.startsWith(pref)).length
   
 };
 
