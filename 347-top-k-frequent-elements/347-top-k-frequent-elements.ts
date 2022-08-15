@@ -30,7 +30,10 @@ function topKFrequent(nums: number[], k: number): number[] {
     let res = []
     for(let i=n;i>=1;i--){
         if(freq[i].length!=0){
-
+            
+            
+            //it will run on average once for each unique element
+            //Also maximum run will be upto k length
             for(const num of freq[i]){
                 res[taken++] = num
                 if(taken == k ) return res
