@@ -1,3 +1,7 @@
+//bucket sort approach
+//OC: O(n)
+//SC: O(n)
+
 function topKFrequent(nums: number[], k: number): number[] {
     const n = nums.length
     const freq = Array<number[]>(n+1)
