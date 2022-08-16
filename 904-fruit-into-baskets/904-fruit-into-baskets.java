@@ -1,3 +1,6 @@
+//OC = O(n) + O(n) = O(n)
+//SC = O(1) -> map will have just size of maximum 3
+
 class Solution {
     public int totalFruit(int[] fruits) {
         
