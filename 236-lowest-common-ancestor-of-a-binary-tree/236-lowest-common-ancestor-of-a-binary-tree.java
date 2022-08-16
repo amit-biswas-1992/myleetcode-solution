@@ -1,3 +1,6 @@
+//OC = O(n) - BFS for traversing all n nodes
+//SC = O(n) -> for call stack + 1 -> variable space = O(n)
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -8,6 +11,7 @@
  * }
  */
 class Solution {
+    
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if(root==null) return null;
         
