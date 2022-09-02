@@ -1,3 +1,4 @@
+//Time: O(m*n), Memory: O(m*n) 
 function longestIncreasingPath(matrix: number[][]): number {
     let memoPath : Map<string,number> = new Map() 
     
