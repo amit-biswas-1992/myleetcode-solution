@@ -1,3 +1,7 @@
+// pattern = sliding window + priority queue and lazy removal from queue
+//Time Complexity = O(n*logn) => (n+n) * logn = 2nlogn = nlogn, n = iterate array, n = priority queue lazy removal each element max once , logn, priorty queue push  
+//Space Complexity = O(n) , priority queue size
+
 function maximumRobots(chargeTimes: number[], runningCosts: number[], budget: number): number {
     
     let windowStart = 0
