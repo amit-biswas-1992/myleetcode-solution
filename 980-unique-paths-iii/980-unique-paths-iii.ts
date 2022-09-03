@@ -1,3 +1,7 @@
+//Approach: Backtracking using Recursive Approach
+//Time Complexity: O(4 ^ (m * n)) (m and n represents number of rows and column)
+//Space Complexity: O(m * n) (maximum recusive calls possible)
+
 function uniquePathsIII(grid: number[][]): number {
     
     let emptySquare = 0
