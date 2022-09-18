@@ -1,3 +1,5 @@
+// OC = O(max(plogp,tlogp)), SC = O(1)
+
 function matchPlayersAndTrainers(players: number[], trainers: number[]): number {
     
     players.sort( (a,b) => a-b)
