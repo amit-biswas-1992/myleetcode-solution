@@ -1,8 +1,6 @@
 function minimumMoney(transactions: number[][]): number {
     
-    transactions.sort( (a,b) => a[1]-b[1])
     
-    console.log(transactions)
     
     let total = 0
     let ans = 0
