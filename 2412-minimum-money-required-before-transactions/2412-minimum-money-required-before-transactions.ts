@@ -23,7 +23,6 @@ function minimumMoney(transactions: number[][]): number {
     
     
     
-    console.log(ans,maxCashBackOfLosingTransaction,maxCostOfProfitableTransaction)
     
     let extra = 0
     if(maxCashBackOfLosingTransaction>maxCostOfProfitableTransaction){
