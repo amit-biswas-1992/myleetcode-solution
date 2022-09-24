@@ -23,6 +23,7 @@ function numberOfWays(s: string): number {
     
     oneCount = 0, zeroCount = 0
     
+    let result = 0
     for(let i=s.length-1;i>=0;i--){
         if(s[i]=='0'){
             zeroCount++
@@ -32,14 +33,10 @@ function numberOfWays(s: string): number {
             oneCount++
             right[i] = zeroCount
         }
-    }
-    
-    let result = 0
-    
-    for(let i=0;i<s.length;i++){
         result += left[i]*right[i]
     }
     
+
     return result
     
     
