@@ -1,9 +1,16 @@
 function maxSubsequence(nums: number[], k: number): number[] {
     
-    let pq = new PriorityQueue((a,b)=>a-b)
+    let pq = new PriorityQueue((a,b)=>a[0]-b[0])
     let freq: Map<number,number> = new Map()
     
-    for(let num of nums){
+    let numsIndex = Array(nums.length).fill(null)
+    
+    for(let i=0;i<nums.length;i++){
+        numsIndex[i] = [nums[i],i]
+    }
+    
+    
+    for(let num of numsIndex){
         pq.enqueue(num)
         
         if(pq.size()>k){
@@ -12,26 +19,21 @@ function maxSubsequence(nums: number[], k: number): number[] {
     }
     
     
-    while(!pq.isEmpty()){
-        let num = pq.dequeue()
-        if(!freq.has(num)) freq.set(num,0)
-        
-        let curFreq = freq.get(num)
-        
-        freq.set(num,curFreq+1)
-    }
+    let arr = Array(k).fill(null)
     
     let j = 0
+    while(!pq.isEmpty()){
+        arr[j++] = pq.dequeue()
+    }
+    
+    arr.sort( (a,b) => a[1]-b[1])
+   
+    j = 0
     let ans = Array(k).fill(-1)
     
-    for(let i=0;i<nums.length;i++){
+    for(let i=0;i<k;i++){
         
-        if(freq.has(nums[i])){
-            ans[j++] = nums[i]
-            freq.set(nums[i],freq.get(nums[i])-1)
-            
-            if(freq.get(nums[i])==0) freq.delete(nums[i])
-        }
+        ans[j++] = arr[i][0]
     }
     
     return ans
@@ -79,22 +81,24 @@ class PriorityQueue {
 
         let idx = 0;
 
-        while(idx < this._size/2) {
-            let leftIdx = 2 * idx + 1;
-            let rightIdx = 2 * idx + 2;
-            let smallerIdx = leftIdx;
-
-            if (rightIdx < this._size && this._comparator(this._values[leftIdx], this._values[rightIdx]) > 0) {
-                smallerIdx = rightIdx;
-            }
-
-            if (this._comparator(this._values[idx], this._values[smallerIdx]) > 0) {
-                [this._values[idx], this._values[smallerIdx]] = [this._values[smallerIdx], this._values[idx]];
-                idx = smallerIdx;
+        while (idx < this._size && idx < Math.floor(this._size / 2)) {
+            let leftIdx = idx * 2 + 1, rightIdx = idx * 2 + 2;
+            if (rightIdx === this._size) {
+              if (this._comparator(this._values[leftIdx], this._values[idx]) > 0) break;
+              [this._values[leftIdx], this._values[idx]] = [this._values[idx], this._values[leftIdx]];
+              idx = leftIdx;
+            } else if (this._comparator(this._values[leftIdx], this._values[idx]) < 0 || this._comparator(this._values[rightIdx], this._values[idx]) < 0) {
+              if (this._comparator(this._values[leftIdx], this._values[rightIdx]) <= 0) {
+                [this._values[leftIdx], this._values[idx]] = [this._values[idx], this._values[leftIdx]];
+                idx = leftIdx;
+              } else {
+                [this._values[rightIdx], this._values[idx]] = [this._values[idx], this._values[rightIdx]];
+                idx = rightIdx;
+              }
             } else {
-                break;
+              break;
             }
-        }
+          }
 
         return removedValue;
 
