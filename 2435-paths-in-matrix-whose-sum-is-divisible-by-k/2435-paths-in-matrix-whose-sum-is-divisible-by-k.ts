@@ -1,6 +1,7 @@
 //TC=O(m*n*k) SC=O(*n*k)
 //it should be k, not all random sum, other wise it will throw out of memory error
 //(5+7) % 6 ==0 and (5+7%6) %6 = (5+1)%6 = 0 same thing, so no need to have key unilimited, only k is fine. 
+//map or js object key with i,j,k takes huge memory. need 3d number array with init value -1 
 
 
 function numberOfPaths(grid: number[][], k: number): number {
