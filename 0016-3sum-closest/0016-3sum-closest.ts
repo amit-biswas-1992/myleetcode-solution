@@ -24,6 +24,7 @@ function threeSumClosest(nums: number[], target: number): number {
                 diff = Math.abs(currentDiff)
             }
             
+            //if sum is bigger than target, if i go to left, it will increase difference. So to become closest, we need to decrease right to find smaller value to get closer to target
             if(sum>target){
                 right--
             }
