@@ -1,3 +1,4 @@
+//O(n*m), SC = m+n
 function multiply(num1: string, num2: string): string {
     let n = num1.length
     let m = num2.length
