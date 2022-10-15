@@ -1,6 +1,7 @@
 //sorting and two pointer
 
 // -4,-1,2 = -3, diff 1-(-3) = 4
+//OC = nlogn + n^2 = O(n^2), SC = O(1)
 function threeSumClosest(nums: number[], target: number): number {
 
     nums.sort( (a,b) => a-b)
