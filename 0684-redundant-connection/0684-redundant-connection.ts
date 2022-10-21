@@ -14,12 +14,10 @@ function findRedundantConnection(edges: number[][]): number[] {
 
 class UnionFind{
     
-    size: number
     parent: number[]
     rank: number[]
 
     constructor(n: number){
-        this.size = 0
         this.parent = Array(n)
         this.rank = Array(n)
         for(let i=0;i<n;i++){
