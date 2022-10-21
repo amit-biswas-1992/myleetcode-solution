@@ -1,3 +1,5 @@
+//binary search logx
+
 function mySqrt(x: number): number {
     
     let i=0, j=x
