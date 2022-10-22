@@ -18,11 +18,9 @@ function topKFrequent(words: string[], k: number): string[] {
         map.set(word,freq+1)
     }
     
-    console.log(map)
     
     for(let [key,frequency] of map.entries()){
         pq.enqueue([key,frequency])
-        pq.print()
         if(pq.size()>k)pq.dequeue()
     }
     
