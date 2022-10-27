@@ -1,32 +1,54 @@
 function findMaximumXOR(nums: number[]): number {
+  let trie = new Trie();
     
-    let mask = 0
-    let maxResult = 0
-    
-    
-    for(let i=31;i>=0;i--){
-        
-        mask = mask | (1 << i)
-        //set type is must, otherwise bitwise operation will not work in typescript
-        let set = new Set<number>()
-        
-        for(let num of nums){
-            set.add(num & mask)
-        }
-        
-        let check = maxResult | (1 << i)
-        
-        
-        for(let num of [...set]){
-            //console.log(num,check)
-            let current: number = (check ^ num)
-            if(set.has(current)){
-                maxResult = check
-                break
-            }
-        }
-    }
-    
-    return maxResult
+  for (let num of nums) {
+    trie.insert(num);
+  }
 
-};
+  let max = 0;
+
+  for (let num of nums) {
+    let currentSum = 0;
+    let node: TrieNode = trie.root;
+
+    for (let i = 31; i >= 0; i--) {
+      let requiredBit = 1 - ((num >> i) & 1);
+      if (!node[requiredBit]) {
+        node = node[1 - requiredBit];
+      } else {
+        currentSum |= 1 << i;
+        node = node[requiredBit];
+      }
+    }
+
+    max = Math.max(max, currentSum);
+  }
+
+  return max;
+}
+
+type TrieNode = { [key: number]: TrieNode };
+
+class Trie {
+  root: TrieNode;
+
+  constructor() {
+    this.root = {};
+  }
+
+  insert(num: number) {
+    
+    let current: TrieNode = this.root;
+      
+    for(let i = 31; i >= 0; i--) {
+      
+      let currentBit = (num >> i) & 1;
+
+      if (!current[currentBit]) {
+        current[currentBit] = {};
+      }
+
+      current = current[currentBit];
+    }
+  }
+}
