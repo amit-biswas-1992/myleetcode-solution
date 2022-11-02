@@ -1,18 +1,21 @@
 function nextGreatestLetter(letters: string[], target: string): string {
 
-    let arr = Array(26).fill(0)
+   let n = letters.length
+   
+   let start = 0
+   let end = n - 1
+   
+   
+   while(start<=end){
+       let mid = start + Math.floor((end-start)/2)
+       if(target >= letters[mid]){
+           start = mid + 1
+       }
+       else{
+           end = mid - 1
+       }
+   }
     
-    
-    for(let ch of letters){
-        arr[ch.charCodeAt(0)-97]++
-    }
-    
-    
-    for(let i=target.charCodeAt(0)-97+1;i<26;i++){
-        if(arr[i]>0) return String.fromCharCode(i+97)
-    }
-    
-    return letters[0]
-    
+    return letters[start%n]
     
 };
