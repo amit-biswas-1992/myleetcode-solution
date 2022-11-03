@@ -13,16 +13,14 @@
  */
 
 function preorderTraversal(root: TreeNode | null): number[] {
-    let result: number[] = []
-    preOrder(root,result)
-    return result
+    if(!root) return []
+    
+    return [
+            root.val,
+            ...preorderTraversal(root.left),
+            ...preorderTraversal(root.right)
+           ]
 };
 
-function preOrder(root: TreeNode|null,result: number[]){
-    if(root==null) return
-    result.push(root.val)
-    
-    preOrder(root.left,result)
-    preOrder(root.right,result)
-}
+
 
