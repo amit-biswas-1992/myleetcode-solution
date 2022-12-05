@@ -16,8 +16,7 @@ function maxAncestorDiff(root: TreeNode | null): number {
     
     let max = 0
 
-    dfs(root.left,root.val,root.val)
-    dfs(root.right,root.val,root.val)
+    dfs(root,root.val,root.val)
 
     function dfs(root: TreeNode | null, value: number,value2: number){
         if(root==null) return
