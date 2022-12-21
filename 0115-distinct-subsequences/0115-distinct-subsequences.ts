@@ -1,32 +1,23 @@
 function numDistinct(s: string, t: string): number {
-    let map = new Map()
-    return solve(s,t,0,0,map)
+    let dp = Array(s.length+1).fill(null).map( x => Array(t.length+1).fill(0))
+    
+    for(let i=0;i<s.length;i++){
+        dp[i][0] = 1
+    }
+    
+    for(let i=0;i<s.length;i++){
+        for(let j=0;j<t.length;j++){
+            if(s[i]==t[j]){
+                dp[i+1][j+1] = dp[i][j] + dp[i][j+1]
+            }
+            else{
+                dp[i+1][j+1] = dp[i][j+1]
+            }
+        }
+    }
+    
+    return dp[s.length][t.length]
+    
+    
 };
 
-
-function solve(s:string, t:string, i:number, j: number, map: Map<string,number>){
-    
-    if(i<=s.length && j==t.length) return 1
-    if(i>=s.length) return 0
-    
-    
-    
-    let key = i + "," + j
-    if(map.has(key)) return map.get(key)
-    
-    let sub = 0
-    
-    if(s[i]!=t[j]){
-        sub += solve(s,t,i+1,j,map)
-    }
-    else{
-        sub += solve(s,t,i+1,j,map) + solve(s,t,i+1,j+1,map)
-    }
-    
-    map.set(key,sub)
-    
-    return sub
-    
-    
-    
-}
